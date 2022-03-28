@@ -2,10 +2,6 @@
 const canvas = document.getElementById("pong");
 const context = canvas.getContext("2d"); 
 
-//game
-const framePerSecond = 50;
-setInterval(game(), 1000/framePerSecond);// calls game() 50 times every 1000ms=1sec
-
 
 // -------------------------------objects
 
@@ -51,26 +47,27 @@ const ball = {
 
 // -------------------------functions
 
-//game FUNCTION
+
+//game initialization FUNCTION
 function game(){
-    update();// movements, collision detection, score updates...
+    update();// movements, collision detection, score updates...variables and logic
     render();
 }
+
+
 
 //update FUNCTION
 function update(){
     //UPDATE BALL POSITION & VELOCITY
     ball.x += ball.velocityX;
     ball.y += ball.velocityY;
+    
     if(ball.y+ball.radius > canvas.height ||
         ball.y-ball.radius < 0){//if ball hits top or bottom of canvas
         ball.velocityY = -ball.velocityY;//flip y velocity direction
     }
-    if(ball.x<canvas.width/2){//which player we are focusing on
-        let player = playerOne;
-    }else{
-        let player = playerTwo;
-    }
+    let player = (ball.x<canvas.width/2)? playerOne : playerTwo;//which player we are focusing on (like an if statement)
+
     if(collision(ball,player)){//check if ball collides with player
         //update velocity (with direction) depending on where ball hit player
         let collidePoint = (ball.y - (player.y+ player.height/2))/player.height/2;// returns 0 if ball hits middle of paddle, -1 and 1 for the tips
@@ -88,7 +85,7 @@ function update(){
 
         ball.speed += 0.1; //speed increases with every collision (game mechanic)
     }
-
+    
     //UPDATE SCORE
     if(ball.x-ball.radius<0){
         playerTwo.score++;
@@ -98,9 +95,26 @@ function update(){
         resetBall();
     }
 
-
+    /*
     //CHECK USER INPUTS
-    canvas.addEventListener('keydown', movePaddle());
+    canvas.addEventListener('keydown', function (event) {
+        if (event.defaultPrevented) {
+          return; // Do nothing if the event was already processed
+        }
+        
+        if(event.key == "w"){
+            playerOne.y+=10;
+        }else if (event.key== "s"){
+            playerOne.y-=10;
+        }else if (event.key == "ArrowUp"){
+            playerTwo.y+=10;
+        }else if (evt.key == "ArrowDown"){
+            playerTwo.y-=10;
+        }
+    });
+
+    // FIXXXXXXXX THISSSSSSSS fix this     !!!!!!!!!!!!!!!
+    */                                                       
 }
 
 //startup render FUNCTION
@@ -108,16 +122,13 @@ function render(){
     //canvas background color
     drawRect(0, 0, 600, 400, "black");
 
+    drawNet();// net in the middle
+
     //playerOne score
     drawText(playerOne.score, canvas.width/4, canvas.height/5, "WHITE");
 
     //playerTwo score
     drawText(playerTwo.score, 3*canvas.width/4, canvas.height/5, "WHITE");
-
-    drawNet();// net in the middle
-
-    //ball
-    drawCircle(ball.x, ball.y, ball.r, ball.color);
 
     //first player
     drawRect(playerOne.x, playerOne.y, playerOne.width, playerOne.height, playerOne.color);
@@ -125,21 +136,12 @@ function render(){
     //second player
     drawRect(playerTwo.x, playerTwo.y, playerTwo.width, playerTwo.height, playerTwo.color);
 
-}
-
-//move paddle FUNCTION
-function movePaddle(evt){
-    if(evt.key == "w"){
-        playerOne.y+=10;
-    }else if (evt.key== "s"){
-        playerOne.y-=10;
-    }else if (evt.key == "ArrowUp"){
-        playerTwo.y+=10;
-    }else if (evt.key == "ArrowDown"){
-        playerTwo.y-=10;
-    }
+    //ball
+    drawCircle(ball.x, ball.y, ball.radius, ball.color);
 
 }
+
+
 
 //reset ball FUNCTION
 function resetBall(){
@@ -175,18 +177,18 @@ function drawRect(x,y,w,h, color){
 
 //circle draw FUNCTION
 function drawCircle(x,y,r, color){
-    ctx.fillStyle = color;
-    ctx.beginPath();
-    ctx.arc(x,y,r,0, Math.PI*2, false);
-    ctx.closePath()
-    ctx.fill();
+    context.fillStyle = color;
+    context.beginPath();
+    context.arc(x,y,r,0, Math.PI*2, false);
+    context.closePath()
+    context.fill();
 }
 
 //draw text FUNCTION
 function drawText(text, x,y, color){
-    ctx.fillStyle = color;
-    ctx.font = "75px fantasy";
-    ctx.fillText(text, x, y);
+    context.fillStyle = color;
+    context.font = "75px fantasy";
+    context.fillText(text, x, y);
 }
 
 //draw net FUNCTION
@@ -197,3 +199,9 @@ function drawNet(){ //all the little rectangles
 
     }
 }
+
+
+
+//loop
+const framePerSecond = 50;
+setInterval(game, 1000/framePerSecond);// calls game() 50 times every 1000ms=1sec
