@@ -2,10 +2,22 @@
 const canvas = document.getElementById("pong");
 const context = canvas.getContext("2d"); 
 
+//ball image variables
+const catImage = new Image();
+catImage.src = "pongWillow.jpg";
+
+//
+const gameOverMessage = document.getElementById("message");
+
+
+//input variables
 let downPressed = false;
 let upPressed = false;
 let wPressed = false;
 let sPressed = false;
+
+//game over boolean variable
+let gameWon = false;
 
 
 
@@ -46,7 +58,7 @@ const  net = {
 const ball = {
     x: canvas.width/2,
     y: canvas.height/2,
-    radius: 10,
+    radius: 25,
     speed: 5,
     velocityX: 5,
     velocityY: 5,
@@ -58,8 +70,19 @@ const ball = {
 
 //game initialization FUNCTION
 function game(){
-    update();// movements, collision detection, score updates...variables and logic
-    render();
+    if(!gameWon){
+        //
+        update();// movements, collision detection, score updates...variables and logic
+        render();
+
+    }else{//once the game is over
+        if(playerOne.score>playerTwo.score){
+            gameOverMessage.innerHTML = "Winner: "+userNameOne;
+        }else{
+            gameOverMessage.innerHTML = "Winner: "+userNameTwo;
+        }
+    }
+
 }
 
 
@@ -70,7 +93,7 @@ function update(){
     ball.y += ball.velocityY;
     if(ball.y+ball.radius > canvas.height ||
         ball.y-ball.radius < 0){//if ball hits top or bottom of canvas     
-
+        
         ball.velocityY = -ball.velocityY;//flip y velocity direction
     }
     let player = (ball.x<canvas.width/2)? playerOne : playerTwo;//which player we are focusing on (like an if statement)
@@ -91,7 +114,7 @@ function update(){
         ball.velocityX = direction*ball.speed*Math.cos(angleRad);
         ball.velocityY = ball.speed*Math.sin(angleRad);
 
-        ball.speed++; //speed increases with every collision (game mechanic)
+        ball.speed+=0.5; //speed increases with every collision (game mechanic)
     }
     
     //UPDATE SCORE (if ball hits left or right)
@@ -118,6 +141,12 @@ function update(){
     else if(sPressed && playerOne.y+playerOne.height<canvas.height-playerOne.speed){
         playerOne.y += playerOne.speed;
     }
+
+
+    //update whether the game is over
+    if(playerOne.score==20||playerTwo.score==20){
+        gameWon = true;
+    }
     
                                                       
 }
@@ -142,7 +171,8 @@ function render(){
     drawRect(playerTwo.x, playerTwo.y, playerTwo.width, playerTwo.height, playerTwo.color);
 
     //ball
-    drawCircle(ball.x, ball.y, ball.radius, ball.color);
+    //drawBall(ball.x, ball.y, ball.radius, ball.color);
+    context.drawImage(catImage,ball.x-ball.radius,ball.y-ball.radius);//-ball.rad cuz image is drawn starting from centre, not top left
 
 }
 
@@ -182,8 +212,8 @@ function keyUpHandler(e) {
 function resetBall(){
     ball.x = canvas.width/2;
     ball.y = canvas.height/2;
-    ball.speed = 5;
-    ball.velocityX = -ball.velocityX;
+    ball.speed = 3;
+    //ball.velocityX = -ball.velocityX; //switches ball direction
 }
 
 //check collision FUNCTION
@@ -213,13 +243,20 @@ function drawRect(x,y,w,h, color){
 }
 
 //circle draw FUNCTION
-function drawCircle(x,y,r, color){
+function drawBall(x,y,r, color){
     context.fillStyle = color;
     context.beginPath();
     context.arc(x,y,r,0, Math.PI*2, false);
     context.closePath()
     context.fill();
+    
+    //canvas.drawImage(catImage,x,y)
 }
+
+//make a drawImage function
+function drawImage(x,y){
+
+}                     
 
 //draw text FUNCTION
 function drawText(text, x,y, color){
@@ -242,6 +279,23 @@ function drawNet(){ //all the little rectangles
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 
-//loop
+
+//prompt for two usernames
+let userNameOne;
+let userNameTwo;
+do{
+    userNameOne = prompt("Enter player one's username");
+    userNameTwo = prompt("Enter player two's username");
+    console.log(userNameOne);
+    console.log(userNameTwo);
+}
+while(userNameOne==null || userNameTwo==null);//make sure they input
+
+//add usernames to the header tag
+document.getElementById("userNames").innerHTML=userNameOne+"\tVS\t"+userNameTwo;
+
+//prompt for ball type (the funny options, pictures in dialog box)
+//main actions and loop
 const framePerSecond = 50;
 setInterval(game, 1000/framePerSecond);// calls game() 50 times every 1000ms=1sec
+
