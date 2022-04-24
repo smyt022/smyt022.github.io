@@ -2,9 +2,9 @@
 const canvas = document.getElementById("pong");
 const context = canvas.getContext("2d"); 
 
-//ball image variables
-const catImage = new Image();
-catImage.src = "pongWillow.jpg";
+//ball image variable (default)
+const ballImage = new Image();
+ballImage.src = "whiteSquare.png";
 
 //
 const gameOverMessage = document.getElementById("message");
@@ -144,7 +144,7 @@ function update(){
 
 
     //update whether the game is over
-    if(playerOne.score==20||playerTwo.score==20){
+    if(playerOne.score==15||playerTwo.score==15){
         gameWon = true;
     }
     
@@ -172,7 +172,7 @@ function render(){
 
     //ball
     //drawBall(ball.x, ball.y, ball.radius, ball.color);
-    context.drawImage(catImage,ball.x-ball.radius,ball.y-ball.radius);//-ball.rad cuz image is drawn starting from centre, not top left
+    context.drawImage(ballImage,ball.x-ball.radius,ball.y-ball.radius);//-ball.rad cuz image is drawn starting from centre, not top left
 
 }
 
@@ -294,7 +294,22 @@ while(userNameOne==null || userNameTwo==null);//make sure they input
 //add usernames to the header tag
 document.getElementById("userNames").innerHTML=userNameOne+"\tVS\t"+userNameTwo;
 
-//prompt for ball type (the funny options, pictures in dialog box)
+
+//prompt for custom ball
+let customBall;
+customBall = prompt("Enter secret code...(type anything if you dont know codes)");
+if(customBall=="willow"){
+    ballImage.src = "pongWillow.jpg";
+}else if(customBall=="soupCat"){        //CODE: willow
+    ballImage.src = "pongCat.png";      //CODE:soupCat
+}else if(customBall=="chefCat"){
+    ballImage.src = "chefCat.jpeg";     //CODE:chefCat
+}else if (customBall=="potatoKing"){
+    ballImage.src = "pongHugh.jpg";
+}else if (customBall=="valoAddict"){
+    ballImage.src = "pongChris.jpg";
+}
+
 //main actions and loop
 const framePerSecond = 50;
 setInterval(game, 1000/framePerSecond);// calls game() 50 times every 1000ms=1sec
