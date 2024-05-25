@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sam's Projects</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #2e2e2e; /* Dark background color */
+            color: #e0e0e0; /* Light text color */
+            font-family: 'Courier New', Courier, monospace; /* Retro font */
+        }
+
+        header {
+            background-color: #3e3e3e; /* Slightly lighter dark color */
+            padding: 1rem;
+            box-shadow: 0 4px 2px -2px gray;
+            text-align: center;
+        }
+
+        h1 {
+            color: #f7b731; /* Retro yellow color */
+        }
+
+        nav {
+            background-color: #4a4a4a; /* Dark background for navbar */
+            padding: 0.5rem;
+            border-radius: 10px;
+        }
+
+        nav a {
+            color: #f7b731; /* Matching retro yellow for links */
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            flex: 1;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .project-bubble {
+            background-color: #3e3e3e; /* Dark background for project bubbles */
+            border: 1px solid #555; /* Dark border */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            margin: 1rem;
+            text-align: center;
+        }
+
+        .project-bubble img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .project-bubble h3 {
+            margin-top: 1rem;
+            color: #f7b731; /* Retro yellow for headings */
+        }
+
+        .project-bubble p {
+            color: #e0e0e0; /* Light text color for descriptions */
+        }
+
+        .btn-primary {
+            background-color: #ff6f61; /* Retro red-orange for primary button */
+            border-color: #ff6f61;
+        }
+
+        .btn-primary:hover {
+            background-color: #ff3b2f; /* Darker shade for hover */
+            border-color: #ff3b2f;
+        }
+
+        .btn-secondary {
+            background-color: #f7b731; /* Retro yellow for secondary button */
+            border-color: #f7b731;
+        }
+
+        .btn-secondary:hover {
+            background-color: #e09e24; /* Darker shade for hover */
+            border-color: #e09e24;
+        }
+
+        footer {
+            background-color: #3e3e3e; /* Matching header background */
+            color: #e0e0e0;
+            text-align: center;
+            padding: 1rem;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>SAM'S CORNER</h1>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="projects.html">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="indieGames.html">Indie Games</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pongGame.html">Pong</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="myCat.html">My Cat</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section>
+        <h2>My Projects</h2>
+        <div class="container">
+            <div class="row">
+                <!-- Project 1 -->
+                <div class="col-md-6">
+                    <div class="project-bubble">
+                        <img src="project1.jpg" alt="Project 1 Image">
+                        <h3>Project 1</h3>
+                        <p>A brief description of Project 1.</p>
+                        <a href="https://github.com/yourusername/project1" class="btn btn-primary" target="_blank">GitHub</a>
+                        <a href="https://yourdeploymentlink.com/project1" class="btn btn-secondary" target="_blank">Live Demo</a>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="col-md-6">
+                    <div class="project-bubble">
+                        <img src="project2.jpg" alt="Project 2 Image">
+                        <h3>Project 2</h3>
+                        <p>A brief description of Project 2.</p>
+                        <a href="https://github.com/yourusername/project2" class="btn btn-primary" target="_blank">GitHub</a>
+                        <a href="https://yourdeploymentlink.com/project2" class="btn btn-secondary" target="_blank">Live Demo</a>
+                    </div>
+                </div>
+                <!-- Add more projects as needed -->
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>Contact: tocatsa@gmail.com</p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

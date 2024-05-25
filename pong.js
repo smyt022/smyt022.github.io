@@ -3,7 +3,7 @@ const canvas = document.getElementById("pong");
 const context = canvas.getContext("2d"); 
 
 //ball image variable (default)
-const ballImage = new Image();
+let ballImage = new Image();
 ballImage.src = "whiteSquare.png";
 
 //
@@ -111,6 +111,24 @@ function update(){
             direction = -1;
         }
 
+        //change the ballImage.src to alternate colours (unless custom ball is being used)
+        // Extracting only the filename from the full file path
+        let lastIndex = ballImage.src.lastIndexOf("/");
+        let filename = ballImage.src.substring(lastIndex + 1);
+
+        console.log("Current ball image source:", filename); // Add this line to check the current source
+        if(filename === "whiteSquare.png"){
+            console.log("Changing ball image source to redSquare.png");
+            ballImage.src = "redSquare.png";
+        }else if(filename === "redSquare.png"){
+            console.log("Changing ball image source to purpleSquare.png");
+            ballImage.src = "purpleSquare.png";
+        }else if(filename === "purpleSquare.png"){
+            console.log("Changing ball image source to redSquare.png");
+            ballImage.src = "redSquare.png";
+        }
+
+
         ball.velocityX = direction*ball.speed*Math.cos(angleRad);
         ball.velocityY = ball.speed*Math.sin(angleRad);
 
@@ -144,7 +162,7 @@ function update(){
 
 
     //update whether the game is over
-    if(playerOne.score==15||playerTwo.score==15){
+    if(playerOne.score==3||playerTwo.score==3){
         gameWon = true;
     }
     

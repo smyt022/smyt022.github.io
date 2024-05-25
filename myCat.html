@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sam's Corner</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #E0F7FA; /* Light cyan background color */
+            color: #333; /* Text color for better readability */
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #00BFFF; /* DeepSkyBlue color for the header */
+            padding: 1rem;
+            box-shadow: 0 4px 2px -2px gray;
+        }
+
+        h1 {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            color: #000080; /* Navy color */
+            margin: 0;
+        }
+
+        nav {
+            background-color: #AFEEEE; /* PaleTurquoise color for the navbar */
+            border-radius: 10px;
+            padding: 0.5rem;
+        }
+
+        nav a {
+            color: #000080; /* Navy color for links */
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            flex: 1;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        section h2 {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            color: #000080;
+        }
+
+        .gallery img {
+            width: 40%;
+            height: 40%; /* You can adjust the height as needed */
+            object-fit: cover;
+        }
+
+        .gallery .photo-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px; /* Adjust spacing between images as needed */
+        }
+
+        footer {
+            background-color: #00BFFF;
+            padding: 1rem;
+            margin-top: auto;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<header class="text-center">
+    <h1>SAM'S CORNER</h1>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="projects.html">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="indieGames.html">Indie Games</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pongGame.html">Pong</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="myCat.html">My Cat</a>
+                </li>
+            </ul>
+        </div>
+    </nav>    
+</header>
+
+<main>
+    <section>
+        <h2>Willow</h2>
+        
+        <div class="gallery">
+            <div class="photo-wrapper">
+              <img src="willow1.jpg" class="img-fluid" alt="Gallery Image 1">
+            </div>
+            <div class="photo-wrapper">
+              <img src="willow2.jpg" class="img-fluid" alt="Gallery Image 2">
+            </div>
+            <div class="photo-wrapper">
+              <img src="willow3.jpg" class="img-fluid" alt="Gallery Image 3">
+            </div>
+            <div class="photo-wrapper">
+              <img src="willow4.jpg" class="img-fluid" alt="Gallery Image 4">
+            </div>
+          </div>
+        
+    </section>
+</main>
+
+<footer class="text-center">
+    <p>contact: tocatsa@gmail.com </p>
+</footer>
+
+</body>
+</html>

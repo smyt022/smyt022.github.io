@@ -1,15 +1,107 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>dyna-pong!</title>
-  <link rel="stylesheet" href="mainstyle.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sam's Corner</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #2C3E50; /* Darker blue-gray background color */
+            color: #ECF0F1; /* Light gray text color for better readability */
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #34495E; /* Dark blue-gray color for the header */
+            padding: 1rem;
+            box-shadow: 0 4px 2px -2px gray;
+        }
+
+        h1 {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            color: #E74C3C; /* Light red color */
+            margin: 0;
+        }
+
+        nav {
+            background-color: #3B5998; /* Darker blue color for the navbar */
+            border-radius: 10px;
+            padding: 0.5rem;
+        }
+
+        nav a {
+            color: #ECF0F1; /* Light gray color for links */
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+            color: #E74C3C; /* Light red color for hover */
+        }
+
+        main {
+            flex: 1;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        section h2 {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            color: #E74C3C; /* Light red color */
+        }
+
+        footer {
+            background-color: #34495E; /* Dark blue-gray color for the footer */
+            padding: 1rem;
+            margin-top: auto;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
-  <h1 id="userNames"></h1>
-  <img src="">
-  <h2 id="message"></h2>
-  <canvas id="pong" width="600" height="400"></canvas>
-  <script src="pong.js"></script>
-  <p>first to 15pts wins</p>
+
+<header class="text-center">
+    <h1>SAM'S CORNER</h1>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="projects.html">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="indieGames.html">Indie Games</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pongGame.html">Pong</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="myCat.html">My Cat</a>
+                </li>
+            </ul>
+        </div>
+    </nav>    
+</header>
+
+<main>
+    <section>
+        <h2> !! About !!</h2>
+        <p>HELLO. Welcome to my corner of the internet. Feel free to take a look around !!!!!!!!!!!!!!!!!!!!</p>
+    </section>
+</main>
+
+<footer class="text-center">
+    <p>contact: tocatsa@gmail.com </p>
+</footer>
+
 </body>
 </html>
