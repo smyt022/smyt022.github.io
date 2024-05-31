@@ -301,6 +301,8 @@ document.addEventListener("keyup", keyUpHandler, false);
 //prompt for two usernames
 let userNameOne;
 let userNameTwo;
+
+/*
 do{
     userNameOne = prompt("Enter player one's username");
     userNameTwo = prompt("Enter player two's username");
@@ -308,6 +310,10 @@ do{
     console.log(userNameTwo);
 }
 while(userNameOne==null || userNameTwo==null);//make sure they input
+*/
+//hardcoding cuz people might find having to enter usersnames annoying
+userNameOne = "player_one";
+userNameTwo = "da_underdog"
 
 //add usernames to the header tag
 document.getElementById("userNames").innerHTML=userNameOne+"\tVS\t"+userNameTwo;
@@ -315,7 +321,11 @@ document.getElementById("userNames").innerHTML=userNameOne+"\tVS\t"+userNameTwo;
 
 //prompt for custom ball
 let customBall;
+
+//removing customball prompt cuz its kinda annoying most of the time
+/*
 customBall = prompt("Enter secret code...(type anything if you dont know codes)");
+*/
 if(customBall=="willow"){
     ballImage.src = "pongWillow.jpg";
 }else if(customBall=="soupCat"){        //CODE: willow
